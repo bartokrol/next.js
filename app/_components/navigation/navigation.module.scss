@@ -1,0 +1,14 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+  height: 5rem;
+  padding: 1rem;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
+
+.nextLogo {
+  margin-left: auto;
+}
