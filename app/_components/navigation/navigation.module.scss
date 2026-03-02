@@ -3,12 +3,74 @@
   align-items: center;
   position: sticky;
   top: 0;
-  box-sizing: border-box;
   height: 5rem;
-  padding: 1rem;
+  padding: 0 1rem;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .nextLogo {
-  margin-left: auto;
+  margin-right: 5rem;
+  padding: 1rem 0;
+}
+
+@mixin unordered-list {
+  list-style-type: none;
+  margin: 0;
+  display: inherit;
+  padding: 0;
+}
+
+.unorderedList {
+  @include unordered-list;
+  height: 100%;
+  align-items: center;
+  position: relative;
+  gap: 1rem;
+}
+
+.listItem {
+  height: 100%;
+
+
+  &:hover,&:focus-within {
+    .unorderedSublist {
+      display: block;
+    }
+  }
+}
+
+@mixin anchor {
+  height: 100%;
+  align-items: center;
+  display: flex;
+
+  &[data-css-is-active='false'] {
+    color: gray;
+  }
+
+  &:hover, &[data-css-is-active='true'] {
+    color: black;
+  }
+}
+
+.listAnchor {
+  @include anchor;
+}
+
+.sublistAnchor {
+  @include anchor;
+  padding: .5rem;
+
+  &:hover,&:focus {
+    background-color: rgba(gray, .2);
+  }
+}
+
+.unorderedSublist {
+  @include unordered-list;
+  position: absolute;
+  top: 100%;
+  display: none;
+  background-color: white;
+  box-shadow: 0 .5rem .5rem 0 rgba(0, 0, 0, .2);
 }

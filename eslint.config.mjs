@@ -19,7 +19,7 @@ const eslintConfig = defineConfig([
       '@stylistic': stylistic,
     },
     rules: {
-      '@stylistic/indent': ['error', 2],
+      '@stylistic/indent': ['error', 4],
       'no-unused-vars': 'error',
       '@stylistic/jsx-closing-bracket-location': 'error',
       '@stylistic/jsx-curly-brace-presence': ['error', 'always'],
