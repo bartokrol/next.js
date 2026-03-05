@@ -1,3 +1,4 @@
+@use '../../../styles/variables';
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 .navigation {
@@ -7,8 +8,8 @@
   top: 0;
   height: 5rem;
   padding: 0 1rem;
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-  background: linear-gradient(90deg,rgba(102, 126, 234, 1) 0%, rgba(47, 133, 90, 1) 100%);
+  box-shadow: 0 .5rem 1rem rgba(variables.$black, .2);
+  background: linear-gradient(90deg,rgba(variables.$blue, 1) 0%, rgba(variables.$green, 1) 100%);
   font-family: "Oswald", sans-serif;
   font-size: 2rem;
   font-weight: 200;
@@ -91,5 +92,5 @@
   top: 100%;
   display: none;
   background-color: white;
-  box-shadow: 0 .5rem .5rem 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 .5rem .5rem 0 rgba(variables.$black, .2);
 }

@@ -1,4 +1,4 @@
-import './globals.scss';
+import '../styles/globals.scss';
 import { Navigation } from '@/app/_components/navigation/Navigation';
 
 export default function RootLayout({
