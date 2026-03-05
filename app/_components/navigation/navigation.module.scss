@@ -1,0 +1,96 @@
+@use '../../../styles/variables';
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+.navigation {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  height: 5rem;
+  padding: 0 1rem;
+  box-shadow: 0 .5rem 1rem rgba(variables.$black, .2);
+  background: linear-gradient(90deg,rgba(variables.$blue, 1) 0%, rgba(variables.$green, 1) 100%);
+  font-family: "Oswald", sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.nextLink {
+  display: contents;
+}
+
+@mixin invert-filter {
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.nextLogo {
+  margin-right: 5rem;
+  padding: 1rem 0;
+  @include invert-filter;
+}
+
+@mixin unordered-list {
+  list-style-type: none;
+  margin: 0;
+  display: inherit;
+  padding: 0;
+}
+
+.unorderedList {
+  @include unordered-list;
+  height: 100%;
+  align-items: center;
+  position: relative;
+  gap: 1rem;
+}
+
+.listItem {
+  height: 100%;
+
+  .listAnchor {
+    @include invert-filter;
+  }
+
+  &:hover,&:focus-within {
+    .unorderedSublist {
+      display: block;
+    }
+  }
+}
+
+@mixin anchor {
+  height: 100%;
+  align-items: center;
+  display: flex;
+
+  &[data-css-is-active='true'] {
+    font-weight: 500;
+  }
+}
+
+.listAnchor {
+  @include anchor;
+}
+
+.sublistAnchor {
+  @include anchor;
+  padding: .5rem;
+
+  &:hover,&:focus {
+    background-color: rgba(gray, .2);
+  }
+}
+
+.unorderedSublist {
+  @include unordered-list;
+  filter: none;
+  position: absolute;
+  top: 100%;
+  display: none;
+  background-color: white;
+  box-shadow: 0 .5rem .5rem 0 rgba(variables.$black, .2);
+}

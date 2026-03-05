@@ -19,13 +19,18 @@ const eslintConfig = defineConfig([
       '@stylistic': stylistic,
     },
     rules: {
-      '@stylistic/indent': ['error', 2],
+      '@stylistic/indent': ['error', 4],
       'no-unused-vars': 'error',
       '@stylistic/jsx-closing-bracket-location': 'error',
       '@stylistic/jsx-curly-brace-presence': ['error', 'always'],
+      '@stylistic/object-curly-spacing': ['error', 'always'],
       '@stylistic/jsx-tag-spacing': ['error', { 'beforeClosing': 'never' }],
       '@stylistic/semi': 'error',
-      '@stylistic/quotes': ['error', 'single']
+      '@stylistic/quotes': ['error', 'single'],
+      '@stylistic/jsx-curly-spacing': ['error', {
+        when: 'never',
+        children: true
+      }]
     }
   }
 ]);
