@@ -11,16 +11,19 @@ export const Navigation = () => {
     
     return (
         <nav className={styles.navigation}>
-            {/*  Next.js logo width === 394px, height === 80px */}
-            {/*  Image height === 30px to fill whole height of the navigation (30px without padding) */}
-            {/*  width === 148, calculations => 30 * 80 = 0.375, 394 * 0.375 = 147.75 */}
-            <Image
-                className={styles.nextLogo}
-                src={'/next.svg'}
-                alt={'Next.js logo'}
-                height={30}
-                width={148}
-            />
+            <Link className={styles.nextLink} href={'https://nextjs.org/'} target={'_blank'}>
+                {/*  Next.js logo width === 394px, height === 80px */}
+                {/*  Image height === 30px to fill whole height of the navigation (30px without padding) */}
+                {/*  width === 148, calculations => 30 * 80 = 0.375, 394 * 0.375 = 147.75 */}
+                <Image
+                    className={styles.nextLogo}
+                    src={'/next.svg'}
+                    alt={'Next.js logo'}
+                    height={30}
+                    width={148}
+                    priority
+                />
+            </Link>
             <ul className={styles.unorderedList} role={'menubar'}>
                 {NAVIGATION_DATA.map(d => (
                     <li key={d.name} className={styles.listItem} role={'none'}>

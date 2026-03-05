@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
 .navigation {
   display: flex;
   align-items: center;
@@ -6,11 +8,28 @@
   height: 5rem;
   padding: 0 1rem;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+  background: linear-gradient(90deg,rgba(102, 126, 234, 1) 0%, rgba(47, 133, 90, 1) 100%);
+  font-family: "Oswald", sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.nextLink {
+  display: contents;
+}
+
+@mixin invert-filter {
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: brightness(0) invert(1);
+  }
 }
 
 .nextLogo {
   margin-right: 5rem;
   padding: 1rem 0;
+  @include invert-filter;
 }
 
 @mixin unordered-list {
@@ -31,6 +50,9 @@
 .listItem {
   height: 100%;
 
+  .listAnchor {
+    @include invert-filter;
+  }
 
   &:hover,&:focus-within {
     .unorderedSublist {
@@ -44,12 +66,8 @@
   align-items: center;
   display: flex;
 
-  &[data-css-is-active='false'] {
-    color: gray;
-  }
-
-  &:hover, &[data-css-is-active='true'] {
-    color: black;
+  &[data-css-is-active='true'] {
+    font-weight: 500;
   }
 }
 
@@ -68,6 +86,7 @@
 
 .unorderedSublist {
   @include unordered-list;
+  filter: none;
   position: absolute;
   top: 100%;
   display: none;
