@@ -1,0 +1,76 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 50rem;
+}
+
+.ul {
+  display: flex;
+  gap: 4vw;
+  padding-left: 0;
+  margin: 0 0 1rem;
+  overflow-x: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  anchor-name: --carousel;
+}
+
+.li {
+  list-style-type: none;
+  background-color: #eeeeee;
+  flex: 0 0 100%;
+  height: 100px;
+  padding-top: 20px;
+  scroll-snap-align: start;
+}
+
+.ul {
+  scroll-marker-group: after;
+}
+
+@mixin scroll-button {
+  position-anchor: --carousel;
+  position: absolute;
+  align-self: anchor-center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  &:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+  }
+}
+
+.ul::scroll-button(left) {
+  @include scroll-button;
+  content: url('/dropdown-arrow.svg');
+  transform: rotate(90deg);
+  right: calc(anchor(left) - 2rem);
+}
+
+.ul::scroll-button(right) {
+  @include scroll-button;
+  content: url('/dropdown-arrow.svg');
+  transform: rotate(-90deg);
+  left: calc(anchor(right) - 2rem);
+}
+
+.ul::scroll-marker-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.li::scroll-marker {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 50%;
+  content: "";
+}
+.li::scroll-marker:target-current {
+  background-color: black;
+}
