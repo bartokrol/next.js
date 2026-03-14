@@ -3,31 +3,8 @@
   grid-template-columns: 1fr 50rem;
 }
 
-.ul {
-  display: flex;
-  gap: 4vw;
-  padding-left: 0;
-  margin: 0 0 1rem;
-  overflow-x: hidden;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  anchor-name: --carousel;
-}
-
-.li {
-  list-style-type: none;
-  background-color: #eeeeee;
-  flex: 0 0 100%;
-  height: 100px;
-  padding-top: 20px;
-  scroll-snap-align: start;
-}
-
-.ul {
-  scroll-marker-group: after;
-}
-
 @mixin scroll-button {
+  content: '';
   position-anchor: --carousel;
   position: absolute;
   align-self: anchor-center;
@@ -35,7 +12,10 @@
   height: 2rem;
   padding: 0;
   cursor: pointer;
-  background-color: transparent;
+  background-image: url('/carousel-arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   border: none;
 
   &:disabled {
@@ -44,33 +24,54 @@
   }
 }
 
-.ul::scroll-button(left) {
-  @include scroll-button;
-  content: url('/dropdown-arrow.svg');
-  transform: rotate(90deg);
-  right: calc(anchor(left) - 2rem);
-}
-
-.ul::scroll-button(right) {
-  @include scroll-button;
-  content: url('/dropdown-arrow.svg');
-  transform: rotate(-90deg);
-  left: calc(anchor(right) - 2rem);
-}
-
-.ul::scroll-marker-group {
+.ul {
   display: flex;
+  padding-left: 0;
+  margin: 0 0 1rem;
+  overflow-x: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
+  anchor-name: --carousel;
+
+  &::scroll-button(left) {
+    @include scroll-button;
+    right: calc(anchor(left) - 3rem);
+  }
+
+  &::scroll-button(right) {
+    @include scroll-button;
+    transform: rotate(180deg);
+    left: calc(anchor(right) - 3rem);
+  }
+
+  &::scroll-marker-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+.li {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 2rem;
-}
-.li::scroll-marker {
-  width: 16px;
-  height: 16px;
-  background-color: transparent;
-  border: 2px solid black;
-  border-radius: 50%;
-  content: "";
-}
-.li::scroll-marker:target-current {
-  background-color: black;
+  list-style-type: none;
+  background-color: #eeeeee;
+  flex: 0 0 100%;
+  height: 10rem;
+  scroll-snap-align: start;
+
+  &::scroll-marker {
+    content: "";
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: transparent;
+    border: .2rem solid black;
+    border-radius: 50%;
+
+    &:target-current {
+      background-color: black;
+    }
+  }
 }
