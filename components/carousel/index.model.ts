@@ -1,5 +1,9 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
+export interface CarouselType extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    children: ReactNode;
+}
+
 type CarouselUlOmit<T> = Omit<T, 'role' | 'aria-live' | 'aria-roledescription'>;
 
 export interface CarouselUlType extends CarouselUlOmit<DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement>> {

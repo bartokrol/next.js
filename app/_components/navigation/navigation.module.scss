@@ -6,7 +6,7 @@
   align-items: center;
   position: sticky;
   top: 0;
-  height: 5rem;
+  height: 7rem;
   padding: 0 1rem;
   box-shadow: 0 .5rem 1rem rgba(variables.$black, .2);
   background: linear-gradient(90deg,rgba(variables.$blue, 1) 0%, rgba(variables.$green, 1) 100%);
@@ -27,9 +27,18 @@
   }
 }
 
+.nextLogoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.poweredBy {
+  line-height: 2rem;
+  font-size: 1.4rem;
+}
+
 .nextLogo {
   margin-right: 5rem;
-  padding: 1rem 0;
   @include invert-filter;
 }
 
@@ -42,7 +51,7 @@
 
 .unorderedList {
   @include unordered-list;
-  height: 100%;
+  height: 5rem;
   align-items: center;
   position: relative;
   gap: 1rem;

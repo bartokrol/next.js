@@ -1,7 +1,7 @@
 'use client';
 
-import styles from '@/app/home.module.scss';
-import { CarouselUlType, CarouselLiType } from './index.model';
+import styles from './carousel.module.scss';
+import { CarouselUlType, CarouselLiType, CarouselType } from './index.model';
 import { mergeProps } from '@react-aria/utils';
 
 export const CarouselUl = ({ children, ...rest }: CarouselUlType) => (
@@ -27,4 +27,8 @@ export const CarouselLi = ({ children, ...rest }: CarouselLiType) => (
     >
         {children}
     </li>
+);
+
+export const Carousel = ({ children, ...rest }: CarouselType) => (
+    <div {...rest}>{children}</div>
 );
