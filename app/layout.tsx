@@ -1,4 +1,5 @@
 import '../styles/globals.scss';
+import styles from './layout.module.scss';
 import { Navigation } from '@/app/_components/navigation/Navigation';
 
 export default function RootLayout({
@@ -10,7 +11,9 @@ export default function RootLayout({
         <html lang={'en'}>
             <body>
                 <Navigation />
-                {children}
+                <div className={styles.content}>
+                    {children}
+                </div>
             </body>
         </html>
     );

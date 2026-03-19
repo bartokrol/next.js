@@ -1,24 +1,18 @@
-export const NAVIGATION_DATA = [
+import { NavigationDataType } from '@/app/index.model';
+
+export const NAVIGATION_DATA: NavigationDataType[] = [
     {
         href: '/',
-        name: 'Test1',
-        children: [
-            {
-                href: '/',
-                name: 'Test1.1'
-            },
-            {
-                href: '/',
-                name: 'Test1.2'
-            },
-            {
-                href: '/',
-                name: 'Test1.3'
-            }
-        ]
+        name: 'Home',
     },
     {
-        href: '/about',
-        name: 'About me'
+        href: '/playground',
+        name: 'Playground',
+        children: [
+            {
+                href: '/playground/carousel',
+                name: 'Carousel'
+            }
+        ]
     }
 ];

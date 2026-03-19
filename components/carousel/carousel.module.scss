@@ -1,0 +1,79 @@
+@mixin scroll-button {
+  content: '';
+  position-anchor: --carousel;
+  position: absolute;
+  align-self: anchor-center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url('/carousel-arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+
+  &:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+  }
+}
+
+.ul {
+  display: flex;
+  padding-left: 0;
+  margin: 0 0 1rem;
+  overflow-x: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
+  anchor-name: --carousel;
+
+  &::scroll-button(left) {
+    @include scroll-button;
+    right: calc(anchor(left) - 3rem);
+  }
+
+  &::scroll-button(right) {
+    @include scroll-button;
+    transform: rotate(180deg);
+    left: calc(anchor(right) - 3rem);
+  }
+
+  &::scroll-marker-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  background-color: #eeeeee;
+  flex: 0 0 100%;
+  height: 10rem;
+  scroll-snap-align: start;
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+
+  &::scroll-marker {
+    content: "";
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: transparent;
+    border: .2rem solid black;
+    border-radius: 50%;
+
+    &:target-current {
+      background-color: black;
+    }
+  }
+}
